@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-public class Scrapper
+public class Scraper
 {
 
     private final  Set<String> linksVisited;
@@ -25,7 +25,7 @@ public class Scrapper
 
 
 
-    public Scrapper() throws InterruptedException
+    public Scraper() throws InterruptedException
     {
         this.linksVisited = Collections.synchronizedSet(new HashSet<>());
         this.emailsUploaded = Collections.synchronizedSet(new HashSet<>());
@@ -84,7 +84,7 @@ public class Scrapper
 
     public static void main(String[] args) throws InterruptedException
     {
-        Scrapper web = new Scrapper();
+        Scraper web = new Scraper();
     }
 
     private class EmailScraper implements Runnable
@@ -156,9 +156,9 @@ public class Scrapper
 
     private void dbUpload()
     {
-        String url = "database-1.cbjmpwcdjfmq.us-east-1.rds.amazonaws.com:1433";
+        String url = "URL TO THE DATABASE";
         String connectionUrl =
-                String.format("jdbc:sqlserver://%s;databaseName=pechman;user=admin;password=mco368Touro", url);
+                String.format("jdbc:sqlserver://%s;databaseName=NAMEOFDATABASE;user=admin;password=PASSWORD", url);
 
         Set<String> localCopy = new HashSet<>(synchedEmail);
         try (Connection con = DriverManager.getConnection(connectionUrl);
